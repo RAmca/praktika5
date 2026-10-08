@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <math.h>
+
+double calculate_F(double x, double y);
+
+int main() {
+    double x1 = 0.71e-4;
+    double y1 = 4.0;
+    double result1 = calculate_F(x1, y1);
+
+    double x2 = 2.3e5;
+    double y2 = 2.7;
+    double result2 = calculate_F(x2, y2);
+
+    printf("--- Контрольный пример 1 ---\n");
+    printf("F(%.2e, %.1f) = %.5f\n", x1, y1, result1);
+    printf("Ожидаемое значение: -0.09489\n\n");
+
+    printf("--- Контрольный пример 2 ---\n");
+    printf("F(%.2e, %.1f) = %.6f\n", x2, y2, result2);
+    printf("Ожидаемое значение: -0.654889\n");
+
+    return 0;
+}
+
+double calculate_F(double x, double y) {
+    double term1 = sqrt(pow(2.0 + y, 2));
+    double term2 = cbrt(sin(y + 5.0));
+    double numerator = term1 + term2;
+
+    double denominator = log(x + 1.0) - pow(y, 3);
+
+    if (denominator == 0.0) {
+        printf("Ошибка: Деление на ноль!\n");
+        return 0.0;
+    }
+
+    return numerator / denominator;
+}
