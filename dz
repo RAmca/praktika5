@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <math.h>
+#include<locale.h>
 
 double calculate_F(double x, double y);
 
 int main() {
+    setlocale(LC_ALL, "Russian");
     double x1 = 0.71e-4;
     double y1 = 4.0;
     double result1 = calculate_F(x1, y1);
@@ -24,6 +26,7 @@ int main() {
 }
 
 double calculate_F(double x, double y) {
+    setlocale(LC_ALL, "Russian");
     double term1 = sqrt(pow(2.0 + y, 2));
     double term2 = cbrt(sin(y + 5.0));
     double numerator = term1 + term2;
